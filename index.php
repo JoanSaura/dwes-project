@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/visuals.css"></script>
     <title>Hotel Management System</title>
 </head>
 
@@ -18,12 +19,13 @@
                 <h1>Hotel Managment System</h1>
             </div>
             <div id="lateral-menu">
-                <a href="">Contacto</a>
-                <a href="">Reserva</a>
-                <a href="">Sobre nosotros</a>
+                <p href="">Contacto</p>
+                <p onclick="ShowHiddenMenu()">Reserva</p>
+                <p href="">Sobre nosotros</p>
             </div>
             <div id="hidden-menu">
-
+                <a href="">Hacer reserva</a>
+                <a href="">Consultar Reserva</a>
             </div>
         </div>
 
