@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/visuals.css"></script>
+    <script src="js/visuals.js"></script>
     <title>Hotel Management System</title>
 </head>
 
@@ -16,7 +16,7 @@
         <div id="top-container">
             <div id="head">
                 <img src="" alt="">
-                <h1>Hotel Managment System</h1>
+                <h1>MIRACLE Hotel</h1>
             </div>
             <div id="lateral-menu">
                 <p href="">Contacto</p>
