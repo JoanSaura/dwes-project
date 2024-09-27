@@ -32,7 +32,10 @@
 
         <div id="main-container">
             <div id="main-content">
-
+                <div id="first-content">
+                    <img src="img/1.jpg" alt="">
+                    <h1>Hola</h1>
+                </div>
             </div>
         </div>
 
