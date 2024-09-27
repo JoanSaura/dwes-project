@@ -49,11 +49,20 @@
   justify-content: center;
 }
 #main-content {
-    height: 700PX;
+    display: flex;
+    height: 80vh;
     width: 60%;
     background-color: aliceblue;
 }
-
+#main-content #first-content> img {
+  width: 400px;
+  height: 300px;
+  border: 2px double black;
+}
+#main-content #first-content {
+  display: flex;
+  margin: 25px;
+}
 #footer {
     background-color: black;
     color: aliceblue;
@@ -71,8 +80,7 @@
   color: blue;
   text-decoration: underline;
 }
-#footer .author {
+#footer > .author {
   display: flex;
-  float: right;
   justify-content: flex-end;
 }
