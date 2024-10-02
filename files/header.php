@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/student71/dwes/css/style.css">
+    <link rel="icon" href="/student71/dwes/img/icons/icon.ico">
     <script src="js/visuals.js"></script>
-    <title>Hotel Management System</title>
+    <title>Miracle Hotel</title>
 </head>
 
 <body>
@@ -15,16 +16,11 @@
 
         <div id="top-container">
             <div id="head">
-                <img src="" alt="">
-                <h1>MIRACLE Hotel</h1>
+                <img src="/student71/dwes/img/LogoText.png" alt="">
             </div>
-            <div id="lateral-menu">
-                <p href="">Contacto</p>
-                <p onclick="ShowHiddenMenu()">Reserva</p>
-                <p href="">Sobre nosotros</p>
-            </div>
-            <div id="hidden-menu">
-                <a href="">Hacer reserva</a>
-                <a href="">Consultar Reserva</a>
+            <div id="head-menu">
+                <a href="/student71/dwes/index.php">Index</a>
+                <a href="/student71/dwes/files/reservations.php">Reservations</a>
+                <a href="/student71/dwes/files/about_us.php">About Us</a>
             </div>
         </div>
