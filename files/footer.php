@@ -6,7 +6,7 @@
             </div>
         </div>
 
-    </div>
+        <script src="js/visuals.js"></script>
 </body>
 
 </html>
