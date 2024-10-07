@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
         <div id="top-container">
             <div id="head">
                 <img src="/student71/dwes/img/LogoText.png" alt="">
@@ -19,6 +18,5 @@
                 <a href="/student71/dwes/index.php">Index</a>
                 <a href="/student71/dwes/files/reservations.php">Reservations</a>
                 <a href="/student71/dwes/files/about_us.php">About Us</a>
-                <a href="/student71/dwes/files/about_us.php">Manuals</a>
             </div>
         </div>

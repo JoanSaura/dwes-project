@@ -1,6 +1,7 @@
 <div id="footer">
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Legal Notice</a>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Political Privacy</a>
+            <a href="/student71/dwes/docs/manual_instalation.html">Instalation Manual</a>
+            <a href="/student71/dwes/docs/manual_technicall.html">Technicall Manual</a>
+            <a href="/student71/dwes/docs/manual_usage.html">Usage Manual</a>
             <div class="author">
                 <p>Joan Saura © 2024 / 2025</p>
             </div>
