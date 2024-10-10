@@ -14,17 +14,16 @@
 <body>
     <div id="top-container">
         <div id="head">
-            <img src="/student71/dwes/img/LogoText.png" alt="">
-            <a href="/student71/dwes/files/login.php">
-            <div class="user">
-                <i class="fa-solid fa-user"></i>
-            </div>
+            <a href="/student71/dwes/index.php">
+                <img src="/student71/dwes/img/LogoText.png" alt="">
             </a>
+                <div class="user-menu">
+                    <a href="/student71/dwes/files/login.php">Login</a>
+                    <a href="">Register</a>
+                </div>
         </div>
         <div id="head-menu">
-            <a href="/student71/dwes/index.php">Index</a>
-            <a href="/student71/dwes/files/reservations.php">Reservations</a>
+            <a href="/student71/dwes/files/reservations.php">Book a room</a>
             <a href="/student71/dwes/files/about_us.php">About Us</a>
-
         </div>
     </div>

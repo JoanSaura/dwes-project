@@ -32,11 +32,7 @@
   background-color: aliceblue;
   color: black;
 }
-.user > .fa-user {
-  border: 5px solid wheat;
-  color: aliceblue;
-  font-size: 15px;
-}
+
 #footer {
     background-color: black;
     color: aliceblue;
