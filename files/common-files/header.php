@@ -19,7 +19,7 @@
             </a>
                 <div class="user-menu">
                     <a href="/student71/dwes/files/login.php">Login</a>
-                    <a href="">Register</a>
+                    <a href="/student71/dwes/files/register.php">Register</a>
                 </div>
         </div>
         <div id="head-menu">
