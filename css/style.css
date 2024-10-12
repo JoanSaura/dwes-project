@@ -63,14 +63,55 @@
   gap: 20px; 
   justify-content: center;
 }
-
-h2 {
+#middle-title {
+  width: 100%;
+  text-align: center;
+  padding: 25px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#admin-tittle {
   grid-column: 1 / -1; 
   text-align: center; 
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .admin-list {
   margin: 35px;
   text-align: center;
   padding: 5px;
+  box-shadow: 25px 5px 25px rgba(10, 0, 0, 0.1);
+
 }
+.admin-list > ul > li {
+  background-color: rgb(95, 123, 201);
+  margin: 25px;
+  padding: 25px;
+  border-radius: 15px;
+  color: aliceblue;
+
+}
+.admin-list > ul > li >a:visited{
+  text-decoration: none;
+}
+#info-display {
+  display: flex;
+  justify-content: center;
+}
+#customers-list {
+  display: grid; 
+}
+.name-display {
+  background-color: rgb(4, 43, 43);
+  color: aliceblue;
+  width: 100%;
+  padding: 15px;
+}
+.customer-card {
+  margin: 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 550px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+

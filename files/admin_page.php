@@ -3,7 +3,7 @@
 
 <div id="admin-page">
     <div id="admin-container">
-        <h2>Admin page</h2>
+        <h1 id="admin-tittle">Admin page</h1>
 
         <div class="admin-list">
             <h3>Rooms</h3>
@@ -17,8 +17,7 @@
         <div class="admin-list">
             <h3>Customers</h3>
             <ul>
-
-                <li><a href="">Search customer data</a></li>
+                <li><a href="/student71/dwes/files/forms/customers/select_customer_form.php">Search customer data</a></li> <!--Done-->
                 <li><a href="/student71/dwes/files/register.php">Register a customer</a></li> <!--Done-->
                 <li><a href="">Update customer data</a></li> 
                 <li><a href="">Delete customer</a></li>

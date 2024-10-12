@@ -1,0 +1,33 @@
+FORM
+Customer
+	*Insert ✔️
+	*Select ✔️
+	*Update
+	*Delete
+Room
+	*Insert
+	*Select
+	*Update
+	*Delete
+Reservation
+	*Insert
+	*Select
+	*Update
+	*Delete
+
+QUERY
+Customer
+	*Insert ✔️
+	*Select ✔️
+	*Update
+	*Delete
+Room
+	*Insert
+	*Select
+	*Update
+	*Delete
+Reservation
+	*Insert
+	*Select
+	*Update
+	*Delete

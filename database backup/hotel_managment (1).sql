@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2024 a las 23:49:26
+-- Tiempo de generación: 13-10-2024 a las 00:42:48
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -190,14 +190,14 @@ CREATE TABLE `071_reservations` (
 --
 
 INSERT INTO `071_reservations` (`reservation_id`, `client_id`, `room_id`, `date_in`, `date_out`, `services`, `reservation_price_per_day`, `reservation_state`) VALUES
-(10, 1, 1, '2024-09-15', '2024-09-20', '{\"wifi\": true, \"breakfast\": true}', 50.00, 'Check-In'),
-(11, 2, 2, '2024-09-18', '2024-09-22', '{\"wifi\": true, \"mini_bar\": true}', 50.00, 'Check Out'),
-(12, 3, 3, '2024-09-25', '2024-09-30', '{\"wifi\": true, \"spa\": true}', 50.00, 'Booked'),
-(13, 4, 4, '2024-10-01', '2024-10-05', '{\"wifi\": true, \"tv\": true}', 50.00, 'Booked'),
-(14, 5, 5, '2024-10-10', '2024-10-15', '{\"wifi\": true, \"desk\": true}', 50.00, 'Check-In'),
-(15, 6, 6, '2024-10-15', '2024-10-20', '{\"wifi\": true, \"balcony\": true}', 75.00, 'Check-In'),
-(16, 7, 7, '2024-10-20', '2024-10-25', '{\"wifi\": true, \"mini_bar\": true}', 75.00, 'Check Out'),
-(17, 8, 8, '2024-10-25', '2024-10-30', '{\"wifi\": true, \"spa\": true, \"balcony\": true}', 75.00, 'Booked');
+(10, 1, 1, '2024-09-15', '2024-09-20', '{\"wifi\": true, \"breakfast\": true}', 50.00, 'Booked'),
+(11, 2, 2, '2024-09-18', '2024-09-22', '{\"wifi\": true, \"mini_bar\": true}', 50.00, 'Cancelled'),
+(12, 3, 3, '2024-09-25', '2024-09-30', '{\"wifi\": true, \"spa\": true}', 50.00, 'Check-In'),
+(13, 4, 4, '2024-10-01', '2024-10-05', '{\"wifi\": true, \"tv\": true}', 50.00, 'Cancelled'),
+(14, 5, 5, '2024-10-10', '2024-10-15', '{\"wifi\": true, \"desk\": true}', 50.00, 'Booked'),
+(15, 6, 6, '2024-10-15', '2024-10-20', '{\"wifi\": true, \"balcony\": true}', 75.00, 'Check Out'),
+(16, 7, 7, '2024-10-20', '2024-10-25', '{\"wifi\": true, \"mini_bar\": true}', 75.00, 'Check-In'),
+(17, 8, 8, '2024-10-25', '2024-10-30', '{\"wifi\": true, \"spa\": true, \"balcony\": true}', 75.00, 'Check-In');
 
 --
 -- Disparadores `071_reservations`
@@ -225,6 +225,23 @@ CREATE TRIGGER `update_room_state_after_reservation` AFTER UPDATE ON `071_reserv
 END
 $$
 DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_room_status_after_reservation` AFTER UPDATE ON `071_reservations` FOR EACH ROW BEGIN
+    -- Si la reserva es 'Booked', cambia el estado de la habitación a 'on Reservation'
+    IF NEW.reservation_state = 'Booked' THEN
+        UPDATE 071_rooms
+        SET room_state = 'on Reservation'
+        WHERE room_id = NEW.room_id;
+    
+    -- Si la reserva se cancela o el cliente hace check-out, cambia el estado a 'Free'
+    ELSEIF NEW.reservation_state = 'Cancelled' OR NEW.reservation_state = 'Check Out' THEN
+        UPDATE 071_rooms
+        SET room_status = 'Free'
+        WHERE room_id = NEW.room_id;
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -237,34 +254,35 @@ CREATE TABLE `071_rooms` (
   `room_number` int(11) DEFAULT NULL,
   `extras_available` varchar(100) DEFAULT NULL,
   `room_type_id` int(11) DEFAULT NULL,
-  `room_state` enum('dirty','clean','broken') NOT NULL DEFAULT 'clean'
+  `room_state` enum('dirty','clean','broken') NOT NULL DEFAULT 'clean',
+  `room_status` enum('Free','on Reservation') NOT NULL DEFAULT 'Free'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `071_rooms`
 --
 
-INSERT INTO `071_rooms` (`room_id`, `room_number`, `extras_available`, `room_type_id`, `room_state`) VALUES
-(1, 101, '{\"WiFi\": true, \"TV\": true}', 1, 'dirty'),
-(2, 102, '{\"WiFi\": true}', 1, 'clean'),
-(3, 103, '{\"WiFi\": true, \"Desk\": true}', 1, 'clean'),
-(4, 104, '{\"WiFi\": true, \"TV\": true, \"Desk\": true}', 1, 'clean'),
-(5, 105, '{\"WiFi\": true, \"TV\": true}', 1, 'dirty'),
-(6, 201, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true}', 2, 'dirty'),
-(7, 202, '{\"WiFi\": true, \"TV\": true}', 2, 'clean'),
-(8, 203, '{\"WiFi\": true, \"TV\": true, \"Desk\": true, \"Mini Bar\": true}', 2, 'clean'),
-(9, 204, '{\"WiFi\": true, \"TV\": true}', 2, 'clean'),
-(10, 205, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true}', 2, 'clean'),
-(11, 301, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Balcony\": true}', 3, 'clean'),
-(12, 302, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true}', 3, 'clean'),
-(13, 303, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Desk\": true}', 3, 'clean'),
-(14, 304, '{\"WiFi\": true, \"TV\": true, \"Balcony\": true}', 3, 'clean'),
-(15, 305, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Desk\": true}', 3, 'clean'),
-(16, 401, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Balcony\": true, \"Spa\": true}', 4, 'clean'),
-(17, 402, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true}', 4, 'clean'),
-(18, 403, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Spa\": true}', 4, 'clean'),
-(19, 404, '{\"WiFi\": true, \"TV\": true, \"Balcony\": true}', 4, 'clean'),
-(20, 405, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Balcony\": true, \"Spa\": true}', 4, 'clean');
+INSERT INTO `071_rooms` (`room_id`, `room_number`, `extras_available`, `room_type_id`, `room_state`, `room_status`) VALUES
+(1, 101, '{\"WiFi\": true, \"TV\": true}', 1, 'dirty', 'on Reservation'),
+(2, 102, '{\"WiFi\": true}', 1, 'clean', 'on Reservation'),
+(3, 103, '{\"WiFi\": true, \"Desk\": true}', 1, 'dirty', 'on Reservation'),
+(4, 104, '{\"WiFi\": true, \"TV\": true, \"Desk\": true}', 1, 'clean', 'Free'),
+(5, 105, '{\"WiFi\": true, \"TV\": true}', 1, 'dirty', 'on Reservation'),
+(6, 201, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true}', 2, 'dirty', 'Free'),
+(7, 202, '{\"WiFi\": true, \"TV\": true}', 2, 'dirty', 'on Reservation'),
+(8, 203, '{\"WiFi\": true, \"TV\": true, \"Desk\": true, \"Mini Bar\": true}', 2, 'dirty', 'on Reservation'),
+(9, 204, '{\"WiFi\": true, \"TV\": true}', 2, 'clean', 'Free'),
+(10, 205, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true}', 2, 'clean', 'Free'),
+(11, 301, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Balcony\": true}', 3, 'clean', 'Free'),
+(12, 302, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true}', 3, 'clean', 'Free'),
+(13, 303, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Desk\": true}', 3, 'clean', 'Free'),
+(14, 304, '{\"WiFi\": true, \"TV\": true, \"Balcony\": true}', 3, 'clean', 'Free'),
+(15, 305, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Desk\": true}', 3, 'clean', 'Free'),
+(16, 401, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Balcony\": true, \"Spa\": true}', 4, 'clean', 'Free'),
+(17, 402, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true}', 4, 'clean', 'Free'),
+(18, 403, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Spa\": true}', 4, 'clean', 'Free'),
+(19, 404, '{\"WiFi\": true, \"TV\": true, \"Balcony\": true}', 4, 'clean', 'Free'),
+(20, 405, '{\"WiFi\": true, \"TV\": true, \"Mini Bar\": true, \"Balcony\": true, \"Spa\": true}', 4, 'clean', 'Free');
 
 -- --------------------------------------------------------
 
@@ -357,7 +375,7 @@ ALTER TABLE `071_room_type`
 -- AUTO_INCREMENT de la tabla `071_customers`
 --
 ALTER TABLE `071_customers`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `071_employee`
