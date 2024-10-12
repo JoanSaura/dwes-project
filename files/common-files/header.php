@@ -25,5 +25,6 @@
         <div id="head-menu">
             <a href="/student71/dwes/files/reservations.php">Book a room</a>
             <a href="/student71/dwes/files/about_us.php">About Us</a>
+            <a href="/student71/dwes/files/admin_page.php">Admin Page</a>
         </div>
     </div>

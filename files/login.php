@@ -2,19 +2,6 @@
 
 <?php include($root . '/student71/dwes/files/common-files/header.php')?>
 
-<?php
-/*if (isset($_GET['submit'])) {
-    echo $_GET['c-first-name'];
-    echo $_GET['c-last-name'];
-    echo $_GET['c-email'];
-}
-if (isset($_POST['submit'])) {
-    echo $_POST['c-first-name'];
-    echo $_POST['c-last-name'];
-    echo $_POST['c-email'];
-}*/
-?>
-
 <section id="container-form">
     <form class="login-form" action="login.php" method="POST">
         <h3>Login</h3>
