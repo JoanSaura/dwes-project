@@ -3,10 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  background: rgb(36,23,0);
-background: linear-gradient(90deg, rgba(36,23,0,1) 0%, rgba(194,193,196,1) 72%);
-}
+
 #top-container{
   position: sticky;
 }
@@ -112,10 +109,8 @@ background: linear-gradient(90deg, rgba(36,23,0,1) 0%, rgba(194,193,196,1) 72%);
   justify-content: center;
 }
 #customers-list, 
-#room-list,
-#reservations-list {
+#room-list {
   display: grid; 
-  grid-template-columns: auto auto auto;
 }
 .name-display {
   background-color: rgb(4, 43, 43);
@@ -135,4 +130,12 @@ background: linear-gradient(90deg, rgba(36,23,0,1) 0%, rgba(194,193,196,1) 72%);
   width: 550px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
+#reservation-form {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+#total-price {
+  color: red;
+  font-weight: bold;
+}

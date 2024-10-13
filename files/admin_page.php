@@ -17,8 +17,8 @@
         <div class="admin-list">
             <h3>Customers</h3>
             <ul>
-                <li><a href="/student71/dwes/files/forms/customers/select_customer_form.php">Search customer data</a></li> <!--Done-->
-                <li><a href="/student71/dwes/files/register.php">Register a customer</a></li> <!--Done-->
+                <li><a href="/student71/dwes/files/forms/customers/select_customer_form.php">Search customer data</a></li> 
+                <li><a href="/student71/dwes/files/register.php">Register a customer</a></li> 
                 <li><a href="">Update customer data</a></li> 
                 <li><a href="">Delete customer</a></li>
             </ul>
@@ -27,7 +27,7 @@
             <h3>Reservations</h3>
             <ul>
                 <li><a href="/student71/dwes/files/forms/reservations/select_reservations_forms.php">Search an existing reservation</a></li>
-                <li><a href="">Create a reservation</a></li> 
+                <li><a href="/student71/dwes/files/forms/reservations/insert_reservation_forms.php">Create a reservation</a></li> 
                 <li><a href="">Update an existing reservation</a></li>
                 <li><a href="">Delete a reservation</a></li>
             </ul>
