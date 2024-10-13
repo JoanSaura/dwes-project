@@ -5,7 +5,6 @@ $customers = include($_SERVER['DOCUMENT_ROOT'] . '/student71/dwes/files/querys/c
 
 <div id="middle-title">
     <h1>List of Customers</h1>
-
 </div>
 
 <div id="info-display">

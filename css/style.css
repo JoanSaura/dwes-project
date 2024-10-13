@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background: rgb(36,23,0);
+background: linear-gradient(90deg, rgba(36,23,0,1) 0%, rgba(194,193,196,1) 72%);
+}
 #top-container{
   position: sticky;
 }
@@ -40,6 +44,7 @@
     display: flex;
     align-items: center;
     text-align: center ;
+    display: flex;
 }
 #footer > a {
   margin: 20px;
@@ -51,7 +56,6 @@
   text-decoration: underline;
 }
 #footer > .author {
-  display: flex;
   justify-content: flex-end;
 }
 
@@ -80,7 +84,13 @@
   text-align: center;
   padding: 5px;
   box-shadow: 25px 5px 25px rgba(10, 0, 0, 0.1);
-
+  background-color: #b67c7c;
+  border-radius: 15px;
+}
+.admin-list:hover {
+  background-color: rgb(13, 11, 153);
+  color: aliceblue;
+  transform: 0,6s;
 }
 .admin-list > ul > li {
   background-color: rgb(95, 123, 201);
@@ -88,17 +98,23 @@
   padding: 25px;
   border-radius: 15px;
   color: aliceblue;
-
+}
+.admin-list > ul > li:hover {
+  background-color: rgb(145, 60, 60);
+  color: aliceblue;
 }
 .admin-list > ul > li >a:visited{
   text-decoration: none;
 }
+
 #info-display {
   display: flex;
   justify-content: center;
 }
-#customers-list {
+#customers-list, 
+#room-list {
   display: grid; 
+  grid-template-columns: auto auto auto;
 }
 .name-display {
   background-color: rgb(4, 43, 43);
@@ -106,9 +122,12 @@
   width: 100%;
   padding: 15px;
 }
-.customer-card {
+.customer-card,
+.room-card {
+  background-color: aliceblue;
   margin: 15px;
   padding: 15px;
+  font-size: 22px;
   border: 1px solid #ccc;
   border-radius: 8px;
   width: 550px;

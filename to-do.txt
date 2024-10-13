@@ -6,7 +6,7 @@ Customer
 	*Delete
 Room
 	*Insert
-	*Select
+	*Select✔️
 	*Update
 	*Delete
 Reservation
@@ -23,7 +23,7 @@ Customer
 	*Delete
 Room
 	*Insert
-	*Select
+	*Select✔️
 	*Update
 	*Delete
 Reservation
