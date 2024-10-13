@@ -14,10 +14,10 @@ $rooms = include($root . '/student71/dwes/files/querys/rooms/select_rooms.php');
             <?php foreach ($rooms as $room) { ?>
                 <div class="room-card">
                     <div class="name-display">
-                        <h4><?php echo htmlspecialchars($room['room_number']); ?></h4>  <!-- Nombres tal cual -->
+                        <h4><?php echo htmlspecialchars($room['room_number']); ?></h4>  
                     </div>
-                    <p><strong>Room Type:</strong> <?php echo htmlspecialchars($room['room_type_name']); ?></p>  <!-- Nombres tal cual -->
-                    <p><strong>Price per Day:</strong> <?php echo htmlspecialchars($room['room_price_per_day']); ?></p>  <!-- Nombres tal cual -->
+                    <p><strong>Room Type:</strong> <?php echo htmlspecialchars($room['room_type_name']); ?></p>  
+                    <p><strong>Price per Day:</strong> <?php echo htmlspecialchars($room['room_price_per_day']); ?></p>
                 </div>
             <?php } ?>
         <?php } else { ?>

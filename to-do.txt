@@ -11,7 +11,7 @@ Room
 	*Delete
 Reservation
 	*Insert
-	*Select
+	*Select✔️
 	*Update
 	*Delete
 
@@ -28,6 +28,6 @@ Room
 	*Delete
 Reservation
 	*Insert
-	*Select
+	*Select✔️
 	*Update
 	*Delete

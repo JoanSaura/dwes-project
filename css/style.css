@@ -112,7 +112,8 @@ background: linear-gradient(90deg, rgba(36,23,0,1) 0%, rgba(194,193,196,1) 72%);
   justify-content: center;
 }
 #customers-list, 
-#room-list {
+#room-list,
+#reservations-list {
   display: grid; 
   grid-template-columns: auto auto auto;
 }
@@ -123,7 +124,8 @@ background: linear-gradient(90deg, rgba(36,23,0,1) 0%, rgba(194,193,196,1) 72%);
   padding: 15px;
 }
 .customer-card,
-.room-card {
+.room-card,
+.reservation-card {
   background-color: aliceblue;
   margin: 15px;
   padding: 15px;

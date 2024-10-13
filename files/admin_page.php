@@ -26,7 +26,7 @@
         <div class="admin-list">
             <h3>Reservations</h3>
             <ul>
-                <li><a href="">Search an existing reservation</a></li>
+                <li><a href="/student71/dwes/files/forms/reservations/select_reservations_forms.php">Search an existing reservation</a></li>
                 <li><a href="">Create a reservation</a></li> 
                 <li><a href="">Update an existing reservation</a></li>
                 <li><a href="">Delete a reservation</a></li>
