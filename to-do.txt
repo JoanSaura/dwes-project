@@ -5,7 +5,7 @@ Customer
 	*Update
 	*Delete
 Room
-	*Insert
+	*Insert✔️
 	*Select✔️
 	*Update
 	*Delete

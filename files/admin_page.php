@@ -9,7 +9,7 @@
             <h3>Rooms</h3>
             <ul>
                 <li><a href="/student71/dwes/files/forms/rooms/select_room_forms.php">Search Romm</a></li>
-                <li><a href="">Create a Romm</a></li>
+                <li><a href="/student71/dwes/files/forms/rooms/insert_room_forms.php">Create a Romm</a></li>
                 <li><a href="">Change Romm Data</a></li>
                 <li><a href="">Delete a room</a></li>
             </ul>
