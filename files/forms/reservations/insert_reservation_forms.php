@@ -1,8 +1,8 @@
-<?php 
-$root = $_SERVER['DOCUMENT_ROOT']; 
-include($root . '/student71/dwes/files/common-files/header.php'); 
-include($root . '/student71/dwes/files/querys/customers/select_customers.php'); 
-include($root . '/student71/dwes/files/querys/rooms/select_rooms.php'); 
+<?php
+$root = $_SERVER['DOCUMENT_ROOT'];
+include($root . '/student71/dwes/files/common-files/header.php');
+include($root . '/student71/dwes/files/querys/customers/select_customers.php');
+include($root . '/student71/dwes/files/querys/rooms/select_rooms.php');
 ?>
 
 <section id="container-form">
@@ -35,7 +35,7 @@ include($root . '/student71/dwes/files/querys/rooms/select_rooms.php');
         <label for="date-out">Date Out</label>
         <input type="date" name="date-out" id="date-out" required>
 
-        <p>Total Price: <span id="total-price">0€</span></p>
+        <p>Total Price: <span id="total-price">0</span></p>
 
         <div class="submit-button">
             <input class="submit" type="submit" name="submit" value="Reserve">
@@ -49,9 +49,9 @@ include($root . '/student71/dwes/files/querys/rooms/select_rooms.php');
     function totalDaysBetweenDates(startDate, endDate) {
         const start = new Date(startDate);
         const end = new Date(endDate);
-        const timeDiff = end - start; 
-        const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-        return daysDiff > 0 ? daysDiff : 0; 
+        const timeDiff = end - start;
+        const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        return daysDiff > 0 ? daysDiff : 0;
     }
 
     function updateTotalPrice() {

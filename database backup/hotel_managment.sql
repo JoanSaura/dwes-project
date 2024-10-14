@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2024 a las 00:42:48
+-- Tiempo de generación: 14-10-2024 a las 15:52:35
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `hotel_managment`
 --
+
+DELIMITER $$
+--
+-- Funciones
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `total_days_between_dates` (`start_date` DATE, `end_date` DATE) RETURNS INT(11) DETERMINISTIC BEGIN
+    DECLARE total_days INT;
+    
+    -- Calculamos la diferencia entre las dos fechas
+    SET total_days = DATEDIFF(end_date, start_date);
+    
+    -- Devolvemos el total de días
+    RETURN total_days;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -307,6 +323,34 @@ INSERT INTO `071_room_type` (`room_type_id`, `room_type_name`, `room_type_price_
 (3, 'Suite', 150.00, 'A large room with a separate living area, ideal for families or business travelers.'),
 (4, 'Deluxe Room', 120.00, 'A luxurious room with premium amenities and a king-size bed.');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `reservation_details`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `reservation_details` (
+`Reservation_ID` int(11)
+,`Room_Number` int(11)
+,`Room_Type_Name` varchar(50)
+,`Room_Type_Price_Per_Day` decimal(10,2)
+,`Client_First_Name` varchar(50)
+,`Client_Last_Name` varchar(50)
+,`Date_In` date
+,`Date_Out` date
+,`Total_Days` int(7)
+,`Total_Price` decimal(16,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `reservation_details`
+--
+DROP TABLE IF EXISTS `reservation_details`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `reservation_details`  AS SELECT `r`.`reservation_id` AS `Reservation_ID`, `rm`.`room_number` AS `Room_Number`, `rt`.`room_type_name` AS `Room_Type_Name`, `rt`.`room_type_price_per_day` AS `Room_Type_Price_Per_Day`, `c`.`client_first_name` AS `Client_First_Name`, `c`.`client_last_name` AS `Client_Last_Name`, `r`.`date_in` AS `Date_In`, `r`.`date_out` AS `Date_Out`, to_days(`r`.`date_out`) - to_days(`r`.`date_in`) AS `Total_Days`, (to_days(`r`.`date_out`) - to_days(`r`.`date_in`)) * `rt`.`room_type_price_per_day` AS `Total_Price` FROM (((`071_reservations` `r` join `071_rooms` `rm` on(`r`.`room_id` = `rm`.`room_id`)) join `071_room_type` `rt` on(`rm`.`room_type_id` = `rt`.`room_type_id`)) join `071_customers` `c` on(`r`.`client_id` = `c`.`client_id`)) ;
+
 --
 -- Índices para tablas volcadas
 --
@@ -405,7 +449,7 @@ ALTER TABLE `071_reports`
 -- AUTO_INCREMENT de la tabla `071_reservations`
 --
 ALTER TABLE `071_reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `071_rooms`
