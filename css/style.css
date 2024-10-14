@@ -108,6 +108,18 @@
   display: flex;
   justify-content: center;
 }
+#edit-icons {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.fa-solid {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-family: 30px;
+}
+
 #customers-list, 
 #room-list {
   display: grid; 
