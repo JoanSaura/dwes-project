@@ -10,8 +10,8 @@
             <ul>
                 <li><a href="/student71/dwes/files/forms/rooms/select_room_forms.php">Search Romm</a></li>
                 <li><a href="/student71/dwes/files/forms/rooms/insert_room_forms.php">Create a Romm</a></li>
-                <li><a href="">Change Romm Data</a></li>
-                <li><a href="">Delete a room</a></li>
+                <li><a href="/student71/dwes/files/forms/rooms/update_room_forms.php">Change Romm Data</a></li>
+                <li><a href="/student71/dwes/files/forms/rooms/delete_room_forms.php">Delete a room</a></li>
             </ul>
         </div>
         <div class="admin-list">

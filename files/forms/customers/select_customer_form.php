@@ -20,6 +20,10 @@ $customers = include($_SERVER['DOCUMENT_ROOT'] . '/student71/dwes/files/querys/c
                     <p><strong>Email:</strong> <?php echo htmlspecialchars($customer['client_email']); ?></p>
                     <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($customer['client_phone_number']); ?></p>
                 </div>
+                <div id="edit-icons">
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </div>
             <?php } ?>
         <?php } else { ?>
             <p>No customers found in the database.</p>

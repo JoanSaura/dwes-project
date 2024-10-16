@@ -33,6 +33,10 @@ $reservations = include($root . '/student71/dwes/files/querys/reservations/selec
                     </div>
 
                 </div>
+                <div id="edit-icons">
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </div>
             <?php } ?>
         <?php } else { ?>
             <p>No reservations found in the database.</p>

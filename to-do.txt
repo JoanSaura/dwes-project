@@ -1,14 +1,15 @@
 FORM
 Customer
-	*Insert ✔️
-	*Select ✔️
+	*Insert✔️
+	*Select✔️
 	*Update
 	*Delete
 Room
 	*Insert✔️
 	*Select✔️
-	*Update
-	*Delete
+	*Update✔️
+	*Delete✔️
+
 Reservation
 	*Insert
 	*Select✔️
@@ -17,15 +18,16 @@ Reservation
 
 QUERY
 Customer
-	*Insert ✔️
-	*Select ✔️
-	*Update
-	*Delete
-Room
-	*Insert
+	*Insert✔️
 	*Select✔️
 	*Update
 	*Delete
+Room
+	*Insert✔️
+	*Select✔️
+	*Update✔️
+	*Delete✔️
+
 Reservation
 	*Insert
 	*Select✔️

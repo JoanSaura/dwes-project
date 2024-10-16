@@ -1,12 +1,12 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 include($root . '/student71/dwes/files/common-files/header.php');
-include($root . '/student71/dwes/files/querys/customers/select_customers.php');
-include($root . '/student71/dwes/files/querys/rooms/select_rooms.php');
+include($root . '/student71/dwes/files/querys/customers/select_customers.php'); // Asegúrate de que este archivo obtenga los clientes correctamente.
+include($root . '/student71/dwes/files/querys/rooms/select_rooms.php'); // Asegúrate de que este archivo obtenga las habitaciones correctamente.
 ?>
 
 <section id="container-form">
-    <form class="reservation-form" action="/student71/dwes/files/querys/reservations/insert_reservations.php" method="POST">
+    <form class="reservation-form" action="/student71/dwes/files/querys/reservations/insert_reservation.php" method="POST">
         <h3>Make a Reservation</h3>
 
         <label for="client-id">Client Fullname</label>
@@ -19,12 +19,12 @@ include($root . '/student71/dwes/files/querys/rooms/select_rooms.php');
             <?php } ?>
         </select>
 
-        <label for="room-id">Available Room</label>
+        <label for="room-id">Room</label>
         <select name="room-id" id="room-id" required>
             <option value="">Select a Room</option>
             <?php foreach ($rooms as $room) { ?>
                 <option value="<?php echo htmlspecialchars($room['room_number']); ?>" data-price="<?php echo htmlspecialchars($room['room_price_per_day']); ?>">
-                    <?php echo htmlspecialchars($room['room_number']); ?> (<?php echo htmlspecialchars($room['room_type_name']); ?> - $<?php echo htmlspecialchars($room['room_price_per_day']); ?>)
+                    Room <?php echo htmlspecialchars($room['room_number']); ?> - $<?php echo htmlspecialchars($room['room_price_per_day']); ?> per day
                 </option>
             <?php } ?>
         </select>

@@ -81,7 +81,7 @@
   text-align: center;
   padding: 5px;
   box-shadow: 25px 5px 25px rgba(10, 0, 0, 0.1);
-  background-color: #b67c7c;
+  background-color: #ffffff;
   border-radius: 15px;
 }
 .admin-list:hover {
@@ -113,11 +113,24 @@
   justify-content: center;
   text-align: center;
 }
+#edit-icons > i {
+  padding: 10px;
+}
+#edit-icons > .fa-pencil:hover {
+  background-color: green;
+  color: #ffffff;
+}
+#edit-icons > .fa-trash:hover {
+  background-color: red;
+  color: #ffffff;
+
+}
 .fa-solid {
   cursor: pointer;
   display: flex;
   justify-content: center;
-  font-family: 30px;
+  font-family: 40px;
+  margin: 15px;
 }
 
 #customers-list, 

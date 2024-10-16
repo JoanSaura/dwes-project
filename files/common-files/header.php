@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/7f53f0147c.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="/student71/dwes/img/icons/icon.ico">
     <link rel="stylesheet" href="/student71/dwes/css/style.css">
     <link rel="stylesheet" href="/student71/dwes/css/forms.css">
-    <link rel="icon" href="/student71/dwes/img/icons/icon.ico">
     <title>Miracle Hotel</title>
 </head>
 
@@ -23,7 +23,6 @@
                 </div>
         </div>
         <div id="head-menu">
-            <a href="/student71/dwes/files/reservations.php">Book a room</a>
             <a href="/student71/dwes/files/about_us.php">About Us</a>
             <a href="/student71/dwes/files/admin_page.php">Admin Page</a>
         </div>
