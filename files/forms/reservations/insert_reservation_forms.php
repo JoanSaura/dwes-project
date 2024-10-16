@@ -1,8 +1,8 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 include($root . '/student71/dwes/files/common-files/header.php');
-include($root . '/student71/dwes/files/querys/customers/select_customers.php'); // Asegúrate de que este archivo obtenga los clientes correctamente.
-include($root . '/student71/dwes/files/querys/rooms/select_rooms.php'); // Asegúrate de que este archivo obtenga las habitaciones correctamente.
+$customers = include($root . '/student71/dwes/files/querys/customers/select_customers.php');
+$rooms = include($root . '/student71/dwes/files/querys/rooms/select_rooms.php');
 ?>
 
 <section id="container-form">
@@ -14,7 +14,7 @@ include($root . '/student71/dwes/files/querys/rooms/select_rooms.php'); // Aseg�
             <option value="">Select a Client</option>
             <?php foreach ($customers as $customer) { ?>
                 <option value="<?php echo htmlspecialchars($customer['client_id']); ?>">
-                    <?php echo htmlspecialchars($customer['client_first_name'] . ' ' . $customer['client_last_name']); ?>
+                    <?php echo htmlspecialchars($customer['client_first_name'] . '  ' . $customer['client_last_name']); ?>
                 </option>
             <?php } ?>
         </select>
