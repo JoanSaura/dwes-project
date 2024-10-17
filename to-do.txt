@@ -3,7 +3,7 @@ Customer
 	*Insert✔️
 	*Select✔️
 	*Update
-	*Delete
+	*Delete✔️
 Room
 	*Insert✔️
 	*Select✔️
@@ -21,7 +21,7 @@ Customer
 	*Insert✔️
 	*Select✔️
 	*Update
-	*Delete
+	*Delete✔️
 Room
 	*Insert✔️
 	*Select✔️

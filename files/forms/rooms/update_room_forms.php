@@ -2,7 +2,6 @@
 $root = $_SERVER['DOCUMENT_ROOT']; 
 include($root . '/student71/dwes/files/common-files/db_connection.php');
 
-// Consulta para obtener las habitaciones actuales y sus tipos
 $sqlRooms = "SELECT r.room_number, r.room_type_id, rt.room_type_name, rt.room_type_price_per_day, rt.room_type_description 
              FROM 071_rooms r 
              JOIN 071_room_type rt ON r.room_type_id = rt.room_type_id;"; // Asegúrate de que '071_room_type' es correcto
@@ -13,7 +12,6 @@ if (!$resultRooms) {
     exit();
 }
 
-// Consulta para obtener todos los tipos de habitación para el desplegable
 $sqlRoomTypes = "SELECT room_type_id, room_type_name, room_type_price_per_day, room_type_description FROM 071_room_type;"; // Asegúrate de que '071_room_type' es correcto
 $resultRoomTypes = mysqli_query($conn, $sqlRoomTypes);
 
@@ -43,7 +41,7 @@ if (!$resultRoomTypes) {
             <?php } ?>
         </select>
 
-        <label for="room-number-input">Room Number</label>
+        <label for="room-number-input">Roaom Number</label>
         <input type="text" name="room-number-input" id="room-number-input" required>
 
         <label for="room-type">Room Type</label>

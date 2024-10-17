@@ -19,8 +19,8 @@
             <ul>
                 <li><a href="/student71/dwes/files/forms/customers/select_customer_form.php">Search customer data</a></li> 
                 <li><a href="/student71/dwes/files/register.php">Register a customer</a></li> 
-                <li><a href="/student71/dwes/files/forms/customers/update_customer_form.php">Update customer data</a></li> 
-                <li><a href="">Delete customer</a></li>
+                <li><a href="/student71/dwes/files/forms/customers/update_customer_form.php">Update customer data</a></li>  
+                <li><a href="/student71/dwes/files/forms/customers/delete_customer_form.php">Delete customer</a></li>
             </ul>
         </div>
         <div class="admin-list">
