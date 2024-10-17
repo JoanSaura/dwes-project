@@ -1,85 +1,76 @@
-<?php
-$root = $_SERVER['DOCUMENT_ROOT'];
-$customers = include($root . '/student71/dwes/files/querys/customers/select_customers.php');
+<?php 
+$root = $_SERVER['DOCUMENT_ROOT']; 
+include($root . '/student71/dwes/files/common-files/db_connection.php');
+
+// Consulta para obtener las habitaciones actuales y sus tipos
+$sqlRooms = "SELECT r.room_number, r.room_type_id, rt.room_type_name, rt.room_type_price_per_day, rt.room_type_description 
+             FROM 071_rooms r 
+             JOIN 071_room_type rt ON r.room_type_id = rt.room_type_id;"; // Asegúrate de que '071_room_type' es correcto
+$resultRooms = mysqli_query($conn, $sqlRooms);
+
+if (!$resultRooms) {
+    echo "Error en la consulta de habitaciones: " . mysqli_error($conn);
+    exit();
+}
+
+// Consulta para obtener todos los tipos de habitación para el desplegable
+$sqlRoomTypes = "SELECT room_type_id, room_type_name, room_type_price_per_day, room_type_description FROM 071_room_type;"; // Asegúrate de que '071_room_type' es correcto
+$resultRoomTypes = mysqli_query($conn, $sqlRoomTypes);
+
+if (!$resultRoomTypes) {
+    echo "Error en la consulta de tipos de habitación: " . mysqli_error($conn);
+    exit();
+}
 ?>
 
 <?php include($root . '/student71/dwes/files/common-files/header.php'); ?>
 
-<div id="middle-title">
-    <h1>Edit Customers</h1>
-</div>
+<section id="container-form">
+    <form class="login-form" id="update-room-form" action="/student71/dwes/files/querys/rooms/update_rooms.php" method="POST">
+        <h3>Update Room</h3>
 
-<div id="info-display">
-    <?php if (!empty($customers)) { ?>
-        <section id="container-form">
-            <form class="login-form" id="customer-form" action="/student71/dwes/files/querys/customers/update_customers.php" method="POST">
-                <h3>Edit Customer</h3>
+        <label for="room-select">Select Room to Update</label>
+        <select name="room-number" id="room-select" required onchange="populateRoomDetails(this.value)">
+            <option value="">Choose a room</option>
+            <?php while ($room = mysqli_fetch_assoc($resultRooms)) { ?>
+                <option value="<?php echo intval($room['room_number']); ?>" 
+                        data-type-id="<?php echo intval($room['room_type_id']); ?>" 
+                        data-type-name="<?php echo htmlspecialchars($room['room_type_name']); ?>" 
+                        data-price="<?php echo htmlspecialchars($room['room_type_price_per_day']); ?>"
+                        data-description="<?php echo htmlspecialchars($room['room_type_description']); ?>">
+                    Room <?php echo htmlspecialchars($room['room_number']); ?> - <?php echo htmlspecialchars($room['room_type_name']); ?>
+                </option>
+            <?php } ?>
+        </select>
 
-                <label for="select-customer">Select Customer to Edit</label>
-                <select name="client_id" id="select-customer" class="form-select" onchange="populateForm(this.value)" required>
-                    <option value="" disabled selected>Select a customer</option>
-                    <?php foreach ($customers as $customer) { ?>
-                        <option value="<?php echo htmlspecialchars($customer['client_id']); ?>">
-                            <?php echo htmlspecialchars($customer['client_first_name'] . ' ' . $customer['client_last_name']); ?> - <?php echo htmlspecialchars($customer['client_id']); ?>
-                        </option>
-                    <?php } ?>
-                </select>
+        <label for="room-number-input">Room Number</label>
+        <input type="text" name="room-number-input" id="room-number-input" required>
 
-                <label for="first-name">First Name</label>
-                <input type="text" name="c-first-name" id="first-name" class="form-input" required>
+        <label for="room-type">Room Type</label>
+        <select name="room-type" id="room-type" required>
+            <?php while ($roomType = mysqli_fetch_assoc($resultRoomTypes)) { ?>
+                <option value="<?php echo intval($roomType['room_type_id']); ?>">
+                    <?php echo htmlspecialchars($roomType['room_type_name']); ?> - $<?php echo htmlspecialchars($roomType['room_type_price_per_day']); ?> per day
+                </option>
+            <?php } ?>
+        </select>
 
-                <label for="last-name">Last Name</label>
-                <input type="text" name="c-last-name" id="last-name" class="form-input" required>
 
-                <label for="identification">Identification</label>
-                <input type="text" name="c-identification" id="identification" class="form-input" required>
+        <div class="submit-button">
+            <input class="submit" type="submit" name="submit" value="Update Room">
+        </div>
+    </form>
+</section>
 
-                <label for="email">Email</label>
-                <input type="email" name="c-email" id="email" class="form-input" required>
-
-                <label for="phonenumber">Phone Number</label>
-                <input type="text" name="c-phonenumber" id="phonenumber" class="form-input" required>
-
-                <label for="password">Password</label>
-                <input type="password" name="c-password" id="password" class="form-input" placeholder="Enter new password if you want to change it">
-
-                <div class="submit-button">
-                    <input class="submit form-submit" type="submit" name="submit" value="Update Customer">
-                </div>
-            </form>
-        </section>
-
-        <script>
-            // Datos de los clientes en formato JSON para usarlos en JavaScript
-            const customersData = <?php echo json_encode($customers); ?>;
-
-            function populateForm(clientId) {
-                // Buscar el cliente seleccionado por client_id
-                const selectedCustomer = customersData.find(customer => customer.client_id == clientId);
-                
-                // Comprobar si el cliente seleccionado existe
-                if (selectedCustomer) {
-                    // Rellenar los campos del formulario con la información del cliente
-                    document.getElementById('first-name').value = selectedCustomer.client_first_name || '';
-                    document.getElementById('last-name').value = selectedCustomer.client_last_name || '';
-                    document.getElementById('identification').value = selectedCustomer.client_identification || '';
-                    document.getElementById('email').value = selectedCustomer.client_email || '';
-                    document.getElementById('phonenumber').value = selectedCustomer.client_phone_number || '';
-                } else {
-                    // Limpiar los campos si no se encuentra el cliente
-                    console.error("Customer not found for ID:", clientId);
-                    document.getElementById('first-name').value = '';
-                    document.getElementById('last-name').value = '';
-                    document.getElementById('identification').value = '';
-                    document.getElementById('email').value = '';
-                    document.getElementById('phonenumber').value = '';
-                }
-            }
-        </script>
-
-    <?php } else { ?>
-        <p>No customers found in the database.</p>
-    <?php } ?>
-</div>
+<script>
+    function populateRoomDetails(roomNumber) {
+        const selectedOption = document.querySelector(`#room-select option[value="${roomNumber}"]`);
+        if (selectedOption) {
+            document.getElementById('room-number-input').value = roomNumber;
+            document.getElementById('room-type').value = selectedOption.getAttribute('data-type-id');
+            document.getElementById('room-description').value = selectedOption.getAttribute('data-description');
+        }
+    }
+</script>
 
 <?php include($root . '/student71/dwes/files/common-files/footer.php'); ?>

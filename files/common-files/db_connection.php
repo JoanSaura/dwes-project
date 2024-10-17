@@ -1,15 +1,16 @@
-<?php 
+<?php
 // db_connection.php
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
+// Crear la conexión
 $conn = mysqli_connect('localhost', 'root', '', 'hotel_managment');
 
+// Verificar la conexión
 if (!$conn) {
     die('Connection error: ' . mysqli_connect_error());
 }
 
-//include($_SERVER['DOCUMENT_ROOT'] . '/student71/dwes/files/common-files/db_connection.php');
-
+// Devolver la conexión para que esté disponible al incluir este archivo
+return $conn;
 ?>
-
