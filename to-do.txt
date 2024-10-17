@@ -2,7 +2,7 @@ FORM
 Customer
 	*Insert✔️
 	*Select✔️
-	*Update
+	*Update✔️
 	*Delete✔️
 Room
 	*Insert✔️
@@ -20,7 +20,7 @@ QUERY
 Customer
 	*Insert✔️
 	*Select✔️
-	*Update
+	*Update✔️
 	*Delete✔️
 Room
 	*Insert✔️
